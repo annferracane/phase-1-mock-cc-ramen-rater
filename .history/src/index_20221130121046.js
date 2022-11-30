@@ -2,31 +2,21 @@
 
 
 function addNewRamenHandler(event) {
-    //event.preventDefault();
+    event.preventDefault();
     const newMenuItem = {};
 
-    newMenuItem.name = addNewRamenForm.querySelector('#new-name').value;
-    newMenuItem.restaurant = addNewRamenForm.querySelector('#new-restaurant').value;
-    newMenuItem.image = addNewRamenForm.querySelector('#new-image').value;
-    newMenuItem.rating = addNewRamenForm.querySelector('#new-rating').value;
-    newMenuItem.comment = addNewRamenForm.querySelector('#new-comment').value;
+    
+    const formInputs = Array.from(event.target.querySelectorAll('input'));
+    console.log(formInputs);
+    
 
-    const configurationObject = {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json",
-        },
-        body: JSON.stringify(newMenuItem),
-    };
-      
-    fetch("http://localhost:3000/ramens", configurationObject)
-    .then(function (response) {
-        return response.json();
-    })
-    .then(function (object) {
-        console.log(object);
-    });
+    formInputs.forEach(formInput => console.log(`#${formInput.id}`));
+    console.log(document.querySelector('#new-name').value);
+    
+    //formInputs.forEach(formInput => console.log(document.querySelector(formInput.id).textContent));
+    //formInputs.forEach(formInput => newMenuItem[formInput.name] = formInput.textContent);
+    //formInputs.forEach(formInput => console.log(formInput.textContent));
+    //console.log(newMenuItem);
 }
 
 function displayMenuItemDetails(ramenDetail) {

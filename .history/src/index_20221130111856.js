@@ -1,33 +1,14 @@
 // write your code here
-
+const addNewRamenForm = document.querySelector('#new-ramen');
+addNewRamenForm.addEventListener('submit', addNewRamenHandler);
 
 function addNewRamenHandler(event) {
-    //event.preventDefault();
-    const newMenuItem = {};
+    event.preventDefault();
+    const formInputs = event.target.querySelectorAll('input');
+    console.log(formInputs);
 
-    newMenuItem.name = addNewRamenForm.querySelector('#new-name').value;
-    newMenuItem.restaurant = addNewRamenForm.querySelector('#new-restaurant').value;
-    newMenuItem.image = addNewRamenForm.querySelector('#new-image').value;
-    newMenuItem.rating = addNewRamenForm.querySelector('#new-rating').value;
-    newMenuItem.comment = addNewRamenForm.querySelector('#new-comment').value;
-
-    const configurationObject = {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json",
-        },
-        body: JSON.stringify(newMenuItem),
-    };
-      
-    fetch("http://localhost:3000/ramens", configurationObject)
-    .then(function (response) {
-        return response.json();
-    })
-    .then(function (object) {
-        console.log(object);
-    });
 }
+
 
 function displayMenuItemDetails(ramenDetail) {
     const ramenDetailDiv = document.querySelector('#ramen-detail');
@@ -40,6 +21,9 @@ function displayMenuItemDetails(ramenDetail) {
 
 
 function showMenuItem(event) {
+    let id;
+    if (event.target.id
+
     fetch(`http://localhost:3000/ramens?id=${event.target.id}`)
     .then(res => res.json())
     .then(ramenDetail => ramenDetail.forEach(displayMenuItemDetails))
@@ -67,11 +51,5 @@ function initialize() {
     .then(ramenData => ramenData.forEach(addRamenToMenu))
 }
 
-const addNewRamenForm = document.querySelector('#new-ramen');
-addNewRamenForm.addEventListener('submit', addNewRamenHandler);
 initialize();
-
-
-    
-
 

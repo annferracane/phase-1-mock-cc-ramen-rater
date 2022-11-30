@@ -2,7 +2,7 @@
 
 
 function addNewRamenHandler(event) {
-    //event.preventDefault();
+    event.preventDefault();
     const newMenuItem = {};
 
     newMenuItem.name = addNewRamenForm.querySelector('#new-name').value;

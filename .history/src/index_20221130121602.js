@@ -2,7 +2,7 @@
 
 
 function addNewRamenHandler(event) {
-    //event.preventDefault();
+    event.preventDefault();
     const newMenuItem = {};
 
     newMenuItem.name = addNewRamenForm.querySelector('#new-name').value;
@@ -20,13 +20,13 @@ function addNewRamenHandler(event) {
         body: JSON.stringify(newMenuItem),
     };
       
-    fetch("http://localhost:3000/ramens", configurationObject)
-    .then(function (response) {
-        return response.json();
-    })
-    .then(function (object) {
-        console.log(object);
-    });
+      fetch("http://localhost:3000/dogs", configurationObject)
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (object) {
+          console.log(object);
+        });
 }
 
 function displayMenuItemDetails(ramenDetail) {
